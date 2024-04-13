@@ -1,0 +1,84 @@
+<!DOCTYPE html> #
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Form</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .review {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .review h3 {
+            margin-top: 0;
+        }
+        .review p {
+            margin-bottom: 5px;
+        }
+        .review img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .review .flag {
+            width: 30px;
+            height: 20px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="review">
+        <img src="https://avatars.preply.com/i/logos/19701fd2-9a4a-43c2-be8a-2e05dd6218c8.jpg" alt="Alexei">
+        <img class="flag" src="https://static.preply.com/groot/country_flags/4x3/ua.svg" alt="Ukraine Flag">
+        <h3>Alexei</h3>
+        <p>October 26, 2023</p>
+        <p>"I enjoyed my trial lesson with Maxim. A very pleasant teacher. He knows his stuff. And his skills in Russian are very useful for Russian-speaking students. Thank You very much!"</p>
+    </div>
+
+    
+    <div class="review">
+        <img src="https://avatars.preply.com/i/logos/1543326.jpg" alt="Zuzka">
+        <img class="flag" src="https://static.preply.com/groot/country_flags/4x3/sk.svg" alt="Slovakia Flag">
+        <h3>Zuzka</h3>
+        <p>September 3, 2023</p>
+        <p>"Maxim is very kind, professional and resourceful tutor. He has always helped me with my advanced English questions, be it vocabulary or grammar!"</p>
+    </div>
+
+    
+    <div class="review">
+        <img src="https://avatars.preply.com/i/logos/3b054479-e89e-45f5-8ccd-ad2e472886c7.jpg" alt="Veronika">
+        <img class="flag" src="https://static.preply.com/groot/country_flags/4x3/ru.svg" alt="Russia Flag">
+        <h3>Veronika</h3>
+        <p>August 9, 2023</p>
+        <p>"Very good informative lessons! This is what you need to get experience in speaking English. Great practice."</p>
+    </div>
+
+    
+    <h2>Write a Review</h2>
+    <form id="review-form">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" min="1" max="5" required>
+
+        <label for="message">Your Review:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Submit Review</button>
+    </form>
+</body>
+</html>
