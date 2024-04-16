@@ -3,8 +3,13 @@
 The purpose of this project is to find the most ideal geolocation strategy. 
 
 
-## 13/4/24
-Currently trying to add a menu to the booking page.
+## 16/4/24
+Found a useful technique on w3 schools to do geolocation through browser information via the user's language settings.
+
+![image](https://github.com/maxmugato/FinalProject/assets/114144181/38e1c743-69b2-4745-bd51-182b3929d770)
+
+![image](https://github.com/maxmugato/FinalProject/assets/114144181/f8433412-4f50-430e-b13f-8121c7bf3bca)
+
 
 ## 14/4/24
 
@@ -17,5 +22,10 @@ Tried to create a manual input system. However, for some reason it won't link me
 ### Database
 Database will prefilled data.
 ![Screenshot 2024-04-14 100254](https://github.com/maxmugato/FinalProject/assets/114144181/0f1e3760-957f-48fe-8912-e1122b98217d)
+
+
+## 13/4/24
+Currently trying to add a menu to the booking page.
+
 
 
