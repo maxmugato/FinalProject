@@ -83,6 +83,9 @@
 // Check if the browser supports geolocation
 if ("geolocation" in navigator) {
     // Get the user's language preference
+
+
+# Reference for geolocation based on the broswer - https://www.w3schools.com/jsref/prop_nav_language.asp
     var userLanguage = navigator.language || navigator.userLanguage;
 
     // Check if the language preference contains "ru" (indicating Russian)
