@@ -85,7 +85,7 @@ if ("geolocation" in navigator) {
     // Get the user's language preference
 
 
-! Reference for geolocation based on the broswer - https://www.w3schools.com/jsref/prop_nav_language.asp
+# Reference for geolocation based on the broswer - https://www.w3schools.com/jsref/prop_nav_language.asp
 
     var userLanguage = navigator.language || navigator.userLanguage;
 
