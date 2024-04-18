@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Booking</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+</head>
+<style>
+
+ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #333; 
+            overflow: hidden;
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+        }
+
+</style>
+
+
+<body>
+    <h1>Lesson Booking</h1>
+    <div id="calendar"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    
+                    {
+                        title: 'Available',
+                        start: '2024-02-01T08:00:00', 
+                        end: '2024-02-01T12:00:00', 
+                        color: 'green'
+                    },
+                    
+                ],
+                dateClick: function(info) {
+                    
+                    alert('Date clicked: ' + info.dateStr);
+                    
+                }
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+
+<body>
+    <ul>
+        <li><a href="Calendar.html">Book a lesson</a></li>
+        <li><a href="Reviews.html">Reviews</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="https://ark-gatehouseawards.org/qr_certificate_verification/38052?fbclid=IwAR1WTV3q9-y31mYcLQizs3eTHAxuD7v97P47F9e2R1pRXtJ4jxCBOfNqcRE" target="_blank">TEFL Certificate</a></li>
+        <li><a href="about_russian.html">По-русски</a></li>
+    </ul>
+
+</html>
