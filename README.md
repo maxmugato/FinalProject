@@ -2,6 +2,13 @@
 ## Project Description
 The purpose of this project is to find the most ideal geolocation strategy. 
 
+## 27/04/24
+Useful Youtube channel teaching how to connect html info to database:
+
+https://www.youtube.com/watch?v=tHKsZdS8Oug
+https://www.youtube.com/watch?v=7ALVC1eWgdI
+![image](https://github.com/maxmugato/FinalProject/assets/114144181/a289995d-05f9-46d5-8b5f-6a243b6afbe0)
+
 
 ## 16/4/24
 Found a useful technique on w3 schools to do geolocation through browser information via the user's language settings.
