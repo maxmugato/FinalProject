@@ -2,6 +2,12 @@
 ## Project Description
 The purpose of this project is to find the most ideal geolocation strategy. 
 
+
+## 29/04/24 
+
+Still having difficulties connecting website user input to the database. This website was useful
+https://www.raghwendra.com/blog/how-to-connect-html-to-database-with-mysql-using-php-example
+
 ## 27/04/24
 Useful Youtube channel teaching how to connect html info to database:
 
