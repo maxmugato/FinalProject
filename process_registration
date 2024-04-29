@@ -1,3 +1,47 @@
+<?php
+// Database connection parameters
+$host = 'localhost';
+$username = 'root';
+$password = '';
+$database = 'teaching website';
+
+// Establish database connection
+$con = mysqli_connect($host, $username, $password, $database);
+
+// Check if the connection is successful
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Sample data for insertion (replace with actual data)
+$name = 'JohnDoe';
+$email = 'johndoe@example.com';
+$phone = '123-456-7890';
+$message = 'This is a test message.';
+
+// Sanitize input data (optional for demonstration)
+$name = mysqli_real_escape_string($con, $name);
+$email = mysqli_real_escape_string($con, $email);
+$phone = mysqli_real_escape_string($con, $phone);
+$message = mysqli_real_escape_string($con, $message);
+
+// SQL query to insert data into the 'tbl_contact' table
+$sql = "INSERT INTO login (username, password) 
+        VALUES ('$name', '$email', '$phone', '$message')";
+
+// Execute the SQL query
+if (mysqli_query($con, $sql)) {
+    echo "Record inserted successfully!";
+} else {
+    echo "Error inserting record: " . mysqli_error($con);
+}
+
+// Close database connection
+mysqli_close($con);
+?>
+
+
+
 //This is just a test data input
 
 <?php
