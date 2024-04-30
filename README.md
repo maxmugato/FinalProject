@@ -2,6 +2,8 @@
 ## Project Description
 The purpose of this project is to find the most ideal geolocation strategy. 
 
+## 30/04/24
+Had a meeting with a supervisor. Hopefully managed to resolve the website to database issue by using scaffolding files.
 
 ## 29/04/24 
 
