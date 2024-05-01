@@ -2,6 +2,9 @@
 ## Project Description
 The purpose of this project is to find the most ideal geolocation strategy. 
 
+## 01/05/24
+Docker has stopped working completely. I have overestimated the amount of time it would take to code the project; such technical issues were not taken into account. If I work on a coding project again in the future, I will organise my time better so that such errors do not occur so close to the deadline.
+
 ## 30/04/24
 Had a meeting with a supervisor. Hopefully managed to resolve the website to database issue by using scaffolding files.
 
