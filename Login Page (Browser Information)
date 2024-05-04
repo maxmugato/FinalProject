@@ -36,24 +36,6 @@
             margin-bottom: 20px;
         }
 
-        h2 {
-            color: #333;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 80%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
         button {
             background-color: #4CAF50;
             color: white;
@@ -69,6 +51,11 @@
             color: #333;
             margin-top: 10px;
             display: inline-block;
+            cursor: pointer; /* Ensure cursor changes on hover */
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -79,45 +66,26 @@
     </section>
 
     <script>
+        document.getElementById("loginButton").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default link behavior
 
-// Check if the browser supports geolocation
-if ("geolocation" in navigator) {
-    // Get the user's language preference
+            // Simulate login process
+            simulateLogin();
+        });
 
+        function simulateLogin() {
+            // Get the user's language preference
+            var userLanguage = navigator.language || navigator.userLanguage;
 
-# Reference for geolocation based on the broswer - https://www.w3schools.com/jsref/prop_nav_language.asp
-
-    var userLanguage = navigator.language || navigator.userLanguage;
-
-    // Check if the language preference contains "ru" (indicating Russian)
-    if (userLanguage.toLowerCase().includes('ru')) {
-        // Redirect to the Russian page
-        window.location.href = "/about_russian.html";
-    }
-}
-
-document.getElementById("loginButton").addEventListener("click", function(event) {
-    event.preventDefault();
-    // Simulate login process, then redirect based on language preference
-    simulateLogin();
-});
-
-function simulateLogin() {
-    // Simulate login process here
-
-    // Get the user's language preference
-    var userLanguage = navigator.language || navigator.userLanguage;
-
-    // Check if the language preference contains "ru" (indicating Russian)
-    if (userLanguage.toLowerCase().includes('ru')) {
-        // Redirect to the Russian page
-        window.location.href = "/about_russian.html";
-    } else {
-        // Redirect to the English page
-        window.location.href = "about.html";
-    }
-}
-        
+            // Check if the language preference contains "ru" (indicating Russian)
+            if (userLanguage.toLowerCase().includes('ru')) {
+                // Redirect to the Russian page
+                window.location.href = "/about_russian.html";
+            } else {
+                // Redirect to the English page
+                window.location.href = "about.html";
+            }
+        }
     </script>
 </body>
 </html>
