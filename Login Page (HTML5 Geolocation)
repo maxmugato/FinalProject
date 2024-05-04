@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maxim Haskins - English Teacher</title>
     <style>
-       
         body {
             background-image: url('https://images.unsplash.com/photo-1503780099440-e6ab046a1d71?q=80&w=1883&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: contain; 
@@ -37,24 +36,6 @@
             margin-bottom: 20px;
         }
 
-        h2 {
-            color: #333;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 80%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
         button {
             background-color: #4CAF50;
             color: white;
@@ -68,37 +49,43 @@
         a {
             text-decoration: none;
             color: #333;
+            display: block; /* Display links as block elements */
             margin-top: 10px;
-            display: inline-block;
         }
     </style>
 </head>
 <body>
     <section>
-        <h1>Maxim Haskins - English Teacher</h1>
-        <form>
-            <a href="about.html" target="_blank"><button type="button">Login</button></a>
-
-        </form>
-        <a href="LoginpageRussian.html">По-русски</a>
+        <h1>Максим Хаскинс - учитель английского языка</h1>
+        <!-- Login Button (Russian) -->
+        <a href="about_russian.html" id="loginButton"><button type="button">Login</button></a>
+        <!-- English Language Link -->
+        <a href="index.html">По-английски</a>
     </section>
-</body>
-</html>
 
+    <script>
+        // Function to handle login process and geolocation
+        function handleLogin() {
+            if ("geolocation" in navigator) {
+                // Prompt user for geolocation
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    // Upon successful geolocation, redirect to about.html
+                    window.location.href = "about.html";
+                }, function(error) {
+                    // Handle error getting location
+                    alert("Error getting location: " + error.message);
+                });
+            } else {
+                // Geolocation not supported
+                alert("Geolocation is not supported by your browser");
+            }
+        }
 
-
-<script>
-   
-    if ("geolocation" in navigator) {
-       
-        navigator.geolocation.getCurrentPosition(function(position) {
-            alert("Latitude: " + position.coords.latitude + "\nLongitude: " + position.coords.longitude);
-        }, function(error) {
-            alert("Error getting location: " + error.message);
+        // Attach event listener to loginButton
+        document.getElementById("loginButton").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            handleLogin(); // Call function to handle login and geolocation
         });
-    } else {
-        alert("Geolocation is not supported by your browser");
-    }
-</script>
+    </script>
 </body>
 </html>
