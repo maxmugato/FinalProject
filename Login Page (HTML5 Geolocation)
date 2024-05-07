@@ -36,6 +36,20 @@
             margin-bottom: 20px;
         }
 
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 80%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
         button {
             background-color: #4CAF50;
             color: white;
@@ -49,43 +63,76 @@
         a {
             text-decoration: none;
             color: #333;
-            display: block; /* Display links as block elements */
             margin-top: 10px;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
     <section>
-        <h1>Максим Хаскинс - учитель английского языка</h1>
-        <!-- Login Button (Russian) -->
-        <a href="about_russian.html" id="loginButton"><button type="button">Login</button></a>
-        <!-- English Language Link -->
-        <a href="index.html">По-английски</a>
+        <h1>Maxim Haskins - English Teacher</h1>
+        <form id="locationForm">
+            <label for="countryInput">Enter your country:</label>
+            <input type="text" id="countryInput" name="countryInput" required>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="LoginpageRussian.html">По-русски</a>
     </section>
 
     <script>
-        // Function to handle login process and geolocation
-        function handleLogin() {
+        document.getElementById("locationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var country = document.getElementById("countryInput").value;
+            console.log("Country:", country);
+            redirectToPage(country);
+        });
+
+        function redirectToPage(country) {
+            var redirectUrl;
+            var normalizedCountry = normalizeCountryName(country);
+
+            switch (normalizedCountry.toLowerCase()) {
+                case "russia":
+                case "россия":
+                    redirectUrl = "/about_russian.html";
+                    break;
+                case "united kingdom":
+                    redirectUrl = "/about.html";
+                    break;
+                case "england":
+                    redirectUrl = "/about.html";
+                    break;
+                default:
+                    redirectUrl = "/default_page.html";
+                    break;
+            }
+
+            // Perform geolocation and redirect to the determined URL
             if ("geolocation" in navigator) {
-                // Prompt user for geolocation
                 navigator.geolocation.getCurrentPosition(function(position) {
-                    // Upon successful geolocation, redirect to about.html
-                    window.location.href = "about.html";
+                    console.log("Latitude:", position.coords.latitude);
+                    console.log("Longitude:", position.coords.longitude);
+
+                    // Redirect to the determined URL based on country and geolocation
+                    window.location.href = redirectUrl;
                 }, function(error) {
-                    // Handle error getting location
-                    alert("Error getting location: " + error.message);
+                    console.log("Error getting location:", error.message);
+                    // Still redirect based on country even if geolocation fails
+                    window.location.href = redirectUrl;
                 });
             } else {
-                // Geolocation not supported
-                alert("Geolocation is not supported by your browser");
+                // Geolocation not supported, simply redirect based on country
+                window.location.href = redirectUrl;
             }
         }
 
-        // Attach event listener to loginButton
-        document.getElementById("loginButton").addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent default form submission behavior
-            handleLogin(); // Call function to handle login and geolocation
-        });
+        // Helper function to normalize country names
+        function normalizeCountryName(country) {
+            // Normalize Cyrillic characters to Latin equivalents
+            // This function can be expanded to cover more characters
+            var normalized = country.replace(/Россия/gi, "Russia");
+            return normalized;
+        }
     </script>
 </body>
 </html>
