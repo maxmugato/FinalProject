@@ -36,20 +36,6 @@
             margin-bottom: 20px;
         }
 
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 80%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
         button {
             background-color: #4CAF50;
             color: white;
@@ -71,67 +57,57 @@
 <body>
     <section>
         <h1>Maxim Haskins - English Teacher</h1>
-        <form id="locationForm">
-            <label for="countryInput">Enter your country:</label>
-            <input type="text" id="countryInput" name="countryInput" required>
-            <button type="submit">Submit</button>
-        </form>
-        <a href="LoginpageRussian.html">По-русски</a>
+        <button id="loginButton">Login</button>
+        <p><a href="LoginpageRussian.html">По-русски</a></p>
     </section>
 
     <script>
-        document.getElementById("locationForm").addEventListener("submit", function(event) {
+        document.getElementById("loginButton").addEventListener("click", function(event) {
             event.preventDefault();
-            var country = document.getElementById("countryInput").value;
-            console.log("Country:", country);
-            redirectToPage(country);
+            determineLocationAndRedirect();
         });
 
-        function redirectToPage(country) {
+        function determineLocationAndRedirect() {
             var redirectUrl;
-            var normalizedCountry = normalizeCountryName(country);
 
-            switch (normalizedCountry.toLowerCase()) {
-                case "russia":
-                case "россия":
-                    redirectUrl = "/about_russian.html";
-                    break;
-                case "united kingdom":
-                    redirectUrl = "/about.html";
-                    break;
-                case "england":
-                    redirectUrl = "/about.html";
-                    break;
-                default:
-                    redirectUrl = "/default_page.html";
-                    break;
-            }
-
-            // Perform geolocation and redirect to the determined URL
+            // Perform geolocation and redirect based on country
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(function(position) {
-                    console.log("Latitude:", position.coords.latitude);
-                    console.log("Longitude:", position.coords.longitude);
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
 
-                    // Redirect to the determined URL based on country and geolocation
-                    window.location.href = redirectUrl;
+                    // Use a geocoding service to determine the country based on coordinates
+                    var geocodingUrl = `https://geocode.xyz/${latitude},${longitude}?json=1`;
+                    fetch(geocodingUrl)
+                        .then(response => response.json())
+                        .then(data => {
+                            var country = data.country;
+                            console.log("Detected country:", country);
+
+                            // Determine redirect URL based on detected country
+                            if (country.toLowerCase() === "russia") {
+                                redirectUrl = "/about_russian.html";
+                            } else {
+                                redirectUrl = "/about.html";
+                            }
+
+                            // Redirect to the determined URL
+                            window.location.href = redirectUrl;
+                        })
+                        .catch(error => {
+                            console.log("Error fetching geolocation data:", error);
+                            // Default redirect to English page if geolocation or country detection fails
+                            window.location.href = "/about.html";
+                        });
                 }, function(error) {
                     console.log("Error getting location:", error.message);
-                    // Still redirect based on country even if geolocation fails
-                    window.location.href = redirectUrl;
+                    // Default redirect to English page if geolocation fails
+                    window.location.href = "/about.html";
                 });
             } else {
-                // Geolocation not supported, simply redirect based on country
-                window.location.href = redirectUrl;
+                // Geolocation not supported, default redirect to English page
+                window.location.href = "/about.html";
             }
-        }
-
-        // Helper function to normalize country names
-        function normalizeCountryName(country) {
-            // Normalize Cyrillic characters to Latin equivalents
-            // This function can be expanded to cover more characters
-            var normalized = country.replace(/Россия/gi, "Russia");
-            return normalized;
         }
     </script>
 </body>
