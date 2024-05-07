@@ -69,20 +69,20 @@
         document.getElementById("loginButton").addEventListener("click", function(event) {
             event.preventDefault(); // Prevent default link behavior
 
-            // Simulate login process
+            
             simulateLogin();
         });
 
         function simulateLogin() {
-            // Get the user's language preference
+            
             var userLanguage = navigator.language || navigator.userLanguage;
 
-            // Check if the language preference contains "ru" (indicating Russian)
+            
             if (userLanguage.toLowerCase().includes('ru')) {
                 // Redirect to the Russian page
                 window.location.href = "/about_russian.html";
             } else {
-                // Redirect to the English page
+                
                 window.location.href = "about.html";
             }
         }
