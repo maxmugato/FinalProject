@@ -70,13 +70,13 @@
         function determineLocationAndRedirect() {
             var redirectUrl;
 
-            // Perform geolocation and redirect based on country
+          
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     var latitude = position.coords.latitude;
                     var longitude = position.coords.longitude;
 
-                    // Use a geocoding service to determine the country based on coordinates
+                    
                     var geocodingUrl = `https://geocode.xyz/${latitude},${longitude}?json=1`;
                     fetch(geocodingUrl)
                         .then(response => response.json())
@@ -84,19 +84,19 @@
                             var country = data.country;
                             console.log("Detected country:", country);
 
-                            // Determine redirect URL based on detected country
+                            
                             if (country.toLowerCase() === "russia") {
                                 redirectUrl = "/about_russian.html";
                             } else {
                                 redirectUrl = "/about.html";
                             }
 
-                            // Redirect to the determined URL
+                           
                             window.location.href = redirectUrl;
                         })
                         .catch(error => {
                             console.log("Error fetching geolocation data:", error);
-                            // Default redirect to English page if geolocation or country detection fails
+                            
                             window.location.href = "/about.html";
                         });
                 }, function(error) {
@@ -105,7 +105,7 @@
                     window.location.href = "/about.html";
                 });
             } else {
-                // Geolocation not supported, default redirect to English page
+                
                 window.location.href = "/about.html";
             }
         }
