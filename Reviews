@@ -1,3 +1,142 @@
+# 13/7/24
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Review Form
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: #333; 
+        overflow: hidden;
+        position: fixed; 
+        top: 0; 
+        left: 0; /* Position the menu from the left */
+        width: 100%; 
+      }
+      li {
+        float: left;
+      }
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      li a:hover {
+        background-color: #111; 
+      }
+      .reviews-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Align reviews to the left */
+        padding-top: 70px; /* Adjust top padding to move reviews down */
+      }
+      .review {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 20px;
+        width: 100%; /* Make reviews take full width */
+        box-sizing: border-box; /* Include padding and border in width calculation */
+      }
+      .review h3 {
+        margin-top: 0;
+      }
+      .review p {
+        margin-bottom: 5px;
+      }
+      .review img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .review .flag {
+        width: 30px;
+        height: 20px;
+        vertical-align: middle;
+      }
+  body
+    ul
+      li
+        a(href="/Calendar") Book a lesson
+      li
+        a(href="/Reviews") Reviews
+      li
+        a(href="/Contact") Contact
+      li
+        a(target="_blank", href="https://ark-gatehouseawards.org/qr_certificate_verification/38052?fbclid=IwAR1WTV3q9-y31mYcLQizs3eTHAxuD7v97P47F9e2R1pRXtJ4jxCBOfNqcRE") TEFL Certificate
+      li
+        a(href="about_russian") По-русски
+    .reviews-container
+      .review
+        img(
+          alt="Alexei", 
+          src="https://avatars.preply.com/i/logos/19701fd2-9a4a-43c2-be8a-2e05dd6218c8.jpg"
+        )
+        img.flag(
+          alt="Ukraine Flag", 
+          src="https://static.preply.com/groot/country_flags/4x3/ua.svg"
+        )
+        h3 Alexei
+        p October 26, 2023
+        p
+          | "I enjoyed my trial lesson with Maxim. A very pleasant teacher. He knows his stuff. And his skills in Russian are very useful for Russian-speaking students. Thank You very much!"
+      .review
+        img(
+          alt="Zuzka", 
+          src="https://avatars.preply.com/i/logos/1543326.jpg"
+        )
+        img.flag(
+          alt="Slovakia Flag", 
+          src="https://static.preply.com/groot/country_flags/4x3/sk.svg"
+        )
+        h3 Zuzka
+        p September 3, 2023
+        p
+          | "Maxim is very kind, professional and resourceful tutor. He has always helped me with my advanced English questions, be it vocabulary or grammar!"
+      .review
+        img(
+          alt="Veronika", 
+          src="https://avatars.preply.com/i/logos/3b054479-e89e-45f5-8ccd-ad2e472886c7.jpg"
+        )
+        img.flag(
+          alt="Russia Flag", 
+          src="https://static.preply.com/groot/country_flags/4x3/ru.svg"
+        )
+        h3 Veronika
+        p August 9, 2023
+        p
+          | "Very good informative lessons! This is what you need to get experience in speaking English. Great practice."
+    h2 Write a Review
+    form#review-form(action="/reviews", method="POST")
+      label(for="name") Your Name:
+      input#name(type="text", name="name", required)
+      label(for="email") Your Email:
+      input#email(type="email", name="email", required)
+      label(for="rating") Rating:
+      input#rating(type="number", name="rating", min="1", max="5", required)
+      label(for="message") Your Review:
+      textarea#message(name="message", required)
+      button(type="submit") Submit Review
+
+
+
 <!DOCTYPE html> #
 <html lang="en">
 <head>
