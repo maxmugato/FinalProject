@@ -71,8 +71,8 @@
             var redirectUrl;
 
           
-            if ("geolocation" in navigator) {
-                navigator.geolocation.getCurrentPosition(function(position) {
+            if ("geolocation" in navigator) { 
+                navigator.geolocation.getCurrentPosition(function(position) { //https://www.w3schools.com/html/html5_geolocation.asp
                     var latitude = position.coords.latitude;
                     var longitude = position.coords.longitude;
 
