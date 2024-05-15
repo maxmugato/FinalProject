@@ -1,3 +1,128 @@
+15/5/24 
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Login Page
+    style.
+      body {
+        background-image: url('https://images.unsplash.com/photo-1503780099440-e6ab046a1d71?q=80&w=1883&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Tahoma', Arial, sans-serif;
+      }
+      .container {
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+      }
+      h1 {
+        color: #000;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      input {
+        width: 80%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+      .register-link {
+        font-size: 14px;
+      }
+  body
+    .container
+      h1 Login here
+      form(action='/authenticate' method='POST')
+        label(for='email') Enter your email:
+        input(name='email', type='email', required)
+        label(for='password') Enter your password:
+        input(name='password', type='password', required)
+        input(type='submit', value='Submit')
+        p.register-link Not registered? 
+          a(href='/register') Click here
+
+    script.
+      document.querySelector('form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        determineUserLocation();
+      });
+
+      function determineUserLocation() {
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition((position) => {
+            const { latitude, longitude } = position.coords;
+            determineCountryByCoordinates(latitude, longitude);
+          }, (error) => {
+            console.error("Error getting geolocation:", error);
+            redirectToDefault();
+          });
+        } else {
+          console.error("Geolocation is not supported.");
+          redirectToDefault();
+        }
+      }
+
+      function determineCountryByCoordinates(latitude, longitude) {
+        fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
+          .then(response => response.json())
+          .then(data => {
+            const countryCode = data.countryCode;
+            redirectToPage(countryCode);
+          })
+          .catch(error => {
+            console.error("Error determining country by coordinates:", error);
+            redirectToDefault();
+          });
+      }
+
+      function redirectToPage(countryCode) {
+        const russianSpeakingCountries = ["RU", "BY"]; // List of predominantly Russian-speaking countries
+        if (russianSpeakingCountries.includes(countryCode)) {
+          // Redirect to the Russian page
+          window.location.href = "/about_russian";
+        } else {
+          // Redirect to the default page
+          window.location.href = "/about";
+        }
+      }
+
+      function redirectToDefault() {
+        // Redirect to the default page if geolocation fails or not supported
+        window.location.href = "/about";
+      }
+
+
+
+
+
+
 //15/5/24
 doctype html
 html(lang="en")
