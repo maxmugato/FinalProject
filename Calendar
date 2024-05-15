@@ -1,3 +1,127 @@
+15/5/24
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(
+      content="width=device-width, initial-scale=1.0" 
+      name="viewport"
+      )
+    title Lesson Booking
+    link(
+      rel="stylesheet" 
+      href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css"
+      )
+    script(src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js")
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding-top: 60px; /* Ensure menu doesn't overlap content */
+        }
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: #333; 
+        overflow: hidden;
+        position: fixed; 
+        top: 0; 
+        left: 0;
+        width: 100%; 
+        }
+        li {
+        float: left;
+        }
+        li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+        li a:hover {
+        background-color: #111; 
+        }
+        h1 {
+        text-align: center;
+        }
+        #calendar {
+        margin-top: 40px;
+        }
+  body
+    // Menu
+    ul
+      li
+        a(href="Calendar") Book a lesson
+      li
+        a(href="Reviews") Reviews
+      li
+        a(href="Contact") Contact
+      li
+        a(
+          target="_blank" 
+          href="https://ark-gatehouseawards.org/qr_certificate_verification/38052?fbclid=IwAR1WTV3q9-y31mYcLQizs3eTHAxuD7v97P47F9e2R1pRXtJ4jxCBOfNqcRE"
+          ) TEFL Certificate
+      li
+        a(href="about") About
+      li
+        a(href="about_russian") По-русски
+      li
+        a(href="/logout") Выйти
+    // Lesson Booking Content
+    h1 Lesson Booking
+    #calendar
+    script.
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'timeGridDay',
+        slotDuration: '00:30:00', // 30 minutes per slot
+        slotMinTime: '08:00:00',  // Start time for time slots (8:00 AM)
+        slotMaxTime: '22:00:00',  // End time for time slots (10:00 PM)
+        selectable: true,
+        editable: true, // Enable event editing (dragging, resizing)
+        events: [
+        {
+        title: 'Available',
+        start: '2024-02-01T08:00:00',
+        end: '2024-02-01T22:00:00',
+        color: 'green'
+        }
+        ],
+        select: function(info) {
+        var start = info.startStr; // Start time of selected slot
+        var end = info.endStr;  // End time of selected slot
+        // Display confirmation message within selected slot
+        var event = {
+        title: 'Lesson Confirmed',
+        start: start,
+        end: end,
+        backgroundColor: 'lightgreen'
+        };
+        calendar.addEvent(event);
+        // Show alert message
+        alert('Lesson time confirmed: ' + start + ' to ' + end);
+        // You can call your email sending function here
+        // sendLessonConfirmationEmail(start, end);
+        },
+        eventClick: function(info) {
+        if (confirm('Are you sure you want to cancel this lesson?')) {
+        info.event.remove(); // Remove the event from the calendar
+        // Show cancellation message
+        alert('Lesson cancelled successfully!');
+        }
+        }
+        });
+        calendar.render();
+        });
+
+
+
+20/4/24
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
