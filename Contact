@@ -1,3 +1,89 @@
+15/5/24
+
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Contact Me
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://images.unsplash.com/photo-1500380804539-4e1e8c1e7118?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        height: 100vh; 
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: #333;
+        padding: 20px;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: #333; 
+        overflow: hidden;
+        position: fixed; 
+        top: 0; 
+        left: 0; /* Position the menu from the left */
+        width: 100%; 
+      }
+      li {
+        float: left;
+      }
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      li a:hover {
+        background-color: #111; 
+      }
+      .contact-container {
+        margin-top: 70px; /* Adjust top margin as needed */
+        padding-left: 20px; /* Adjust left padding for content */
+        width: 100%; /* Make content container take full width */
+        box-sizing: border-box; /* Include padding and border in width calculation */
+      }
+      h1 {
+        margin-bottom: 10px;
+      }
+      p {
+        line-height: 2.5;
+        margin: 0; /* Remove default margin */
+      }
+  body
+    ul
+      li
+        a(href="/Calendar") Book a lesson
+      li
+        a(href="/Reviews") Reviews
+      li
+        a(href="/Contact") Contact
+      li
+        a(target="_blank", href="https://ark-gatehouseawards.org/qr_certificate_verification/38052?fbclid=IwAR1WTV3q9-y31mYcLQizs3eTHAxuD7v97P47F9e2R1pRXtJ4jxCBOfNqcRE") TEFL Certificate
+      li
+        a(href="/about_russian") По-русски
+      li
+        a(href="/logout") logout 
+      li   
+    .contact-container
+      h1 Contact Me
+      p
+        | Email:
+        a(href="mailto:m.haskins@hotmail.co.uk") m.haskins@hotmail.co.uk
+
+
+
+12/4/24
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
