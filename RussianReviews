@@ -1,0 +1,96 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Reviews Page
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding-top: 70px; /* Adjust top padding to accommodate the menu */
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      .review {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .review h3 {
+        margin-top: 0;
+      }
+      .review p {
+        margin-bottom: 5px;
+      }
+    style.
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: #333;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0; /* Ensure menu touches left side */
+        width: 100%; /* Extend menu to cover entire width */
+      }
+      li {
+        float: left;
+      }
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      li a:hover {
+        background-color: #111;
+      }
+  body
+    ul
+      li
+        a(href="/CalendarRus") Забронировать урок
+      li
+        a(href="/RussianReviews") Отзывы
+      li
+        a(href="/ContactRussian") Контакт
+      li
+        a(target="_blank", href="https://ark-gatehouseawards.org/qr_certificate_verification/38052?fbclid=IwAR1WTV3q9-y31mYcLQizs3eTHAxuD7v97P47F9e2R1pRXtJ4jxCBOfNqcRE") Сертификат ТЭФЛ
+      li
+        a(href="about_russian") Домашняя страница
+      li
+        a(href="/logout") Выйти
+      li
+    .container
+  h1 Отзывы
+  if reviews && reviews.length > 0
+    each review in reviews
+      .review
+        h3= review.author
+        p= review.content
+  else
+
+
+
+      h2 Написать отзыв
+      form#review-form(action="/submit-review", method="POST")
+        label(for="name") Ваше имя:
+        input#name(type="text", name="name", required)
+        
+        label(for="rating") Рейтинг:
+        input#rating(type="number", name="rating", min="1", max="5", required)
+        
+        label(for="message") Ваш отзыв:
+        textarea#message(name="message", required)
+        
+        button(type="submit") Отправить отзыв:
+
