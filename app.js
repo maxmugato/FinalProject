@@ -1,4 +1,80 @@
-//21/5/24
+
+
+21/05/24
+//In this one the HTML5 works (it is with the browser code too).
+
+app.post('/authenticate', async function (req, res) {
+  params = req.body;
+  var user = new User(params.email);
+  console.log(user)
+  try {
+      uId = await user.getIdFromEmail();
+      console.log(uId)
+      if (uId) {
+          match = await user.authenticate(params.password);
+          if (match) {
+              req.session.uid = uId;
+              req.session.loggedIn = true;
+              console.log(req.session.id);
+              if ("geolocation" in navigator) {
+                  navigator.geolocation.getCurrentPosition((position) => {
+                      const { latitude, longitude } = position.coords;
+                      determineCountryByCoordinates(latitude, longitude, res);
+                  }, (error) => {
+                      console.error("Error getting geolocation:", error);
+                      redirectToDefault(res);
+                  });
+              } else {
+                  console.error("Geolocation is not supported.");
+                  redirectToDefault(res);
+              }
+          }
+          else {
+              // TODO improve the user journey here
+              res.send('invalid password');
+          }
+      }
+      else {
+          res.send('invalid email');
+      }
+  } catch (err) {
+      console.error(`Error while comparing `, err.message);
+  }
+});  
+
+async function determineCountryByCoordinates(latitude, longitude, res) {
+  try {
+      const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
+      const data = await response.json();
+      const countryCode = data.countryCode;
+      redirectToPage(countryCode, res);
+  } catch (error) {
+      console.error("Error determining country by coordinates:", error);
+      redirectToDefault(res);
+  }
+}
+
+function redirectToPage(countryCode, res) {
+  const russianSpeakingCountries = ["RU", "BY"]; // List of predominantly Russian-speaking countries
+  if (russianSpeakingCountries.includes(countryCode)) {
+      // Redirect to the Russian page
+      res.redirect("/about_russian");
+  } else {
+      // Redirect to the default page
+      res.redirect("/about");
+  }
+}
+
+function redirectToDefault(res) {
+  // Redirect to the default page if geolocation fails or not supported
+  res.redirect("/about");
+}
+
+
+
+
+
+//21/5/24 (In this one the login works and it is the location browser)
 // Import express.js
 const express = require("express");
 
